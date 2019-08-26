@@ -22,7 +22,7 @@ func Activate(interval int) {
 	for ; true; <-ticker.C {
 		age := time.Since(timer)
 		log.Debugf("WatchDog: Woof! (%.2fs)", age.Seconds())
-		if age/1000000000 > 15 {
+		if age.Seconds() > interval {
 			log.Debugf("WatchDog: zzzzZzZZZzzzzZz... (%.2fs)", age.Seconds())
 			os.Exit(1)
 		}
