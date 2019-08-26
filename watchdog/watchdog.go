@@ -21,7 +21,7 @@ func Activate(interval int) {
 	ticker := time.NewTicker(time.Duration(interval) * time.Second)
 	for ; true; <-ticker.C {
 		age := time.Since(timer)
-		if age.Seconds() > interval {
+		if int(age.Seconds()) > interval {
 			log.Debugf("WatchDog: zzzzZzZZZzzzzZz... (%.2fs)", age.Seconds())
 			os.Exit(1)
 		} else {
