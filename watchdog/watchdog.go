@@ -16,9 +16,9 @@ func Poke() {
 }
 
 // Activate the watchdog
-func Activate() {
+func Activate(interval int) {
 	Poke()
-	ticker := time.NewTicker(time.Duration(5) * time.Second)
+	ticker := time.NewTicker(time.Duration(interval) * time.Second)
 	for ; true; <-ticker.C {
 		age := time.Since(timer)
 		log.Debugf("WatchDog: Woof! (%.2fs)", age.Seconds())
